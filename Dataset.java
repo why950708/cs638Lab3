@@ -4,7 +4,7 @@
  * 
  */
 import java.util.ArrayList;
-
+import java.util.List;
 public class Dataset {
 	// the list of all instances
 	private ArrayList<Instance> instances;
