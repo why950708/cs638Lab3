@@ -637,10 +637,11 @@ public class Lab3 {
 	
 	private static int trainPerceptrons(Vector<Vector<Double>> trainFeatureVectors,
 			Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors) {
-			// for(Vector<Double> e : trainFeatureVectors)
-			// {
-			// System.out.println("~~~~~~~~~~~" + e);
-			// }
+			//Used to print out the content of each picture
+			for(Vector<Double> e : trainFeatureVectors)
+			{
+			System.out.println("~~~~~~~~~~~" + e);
+			}
 			Vector<Vector<Double>> perceptrons = new Vector<Vector<Double>>(Category.values().length); // One
 																									// perceptron
 																									// per
