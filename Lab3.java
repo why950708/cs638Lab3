@@ -41,7 +41,7 @@ public class Lab3 {
 		airplanes, butterfly, flower, grand_piano, starfish, watch
 	}; // We'll hardwire these in, but more robust code would not do so.
 
-	private static final Boolean useRGB = false; // If true, FOUR units are used
+	private static final Boolean useRGB = true; // If true, FOUR units are used
 													// per pixel: red, green,
 													// blue, and grey. If false,
 													// only ONE (the grey-scale
@@ -603,6 +603,7 @@ public class Lab3 {
 	/////////////////////////////////////////////////////////////////////////////////////////////// provided.
 
 	//Perceptron output calculation
+	//dealt with last element 
 	 private static double calcOutPut(Vector<Double> vals, Vector<Double> perceptron)
 	 {	
 		double output =0;
@@ -633,15 +634,19 @@ public class Lab3 {
 		    return (1/( 1 + Math.pow(Math.E,(-1*x))));
 	 }
 	
+	// private static double calcAccuracy(Vector<Double> inFeatureVectors, Vector<Double> outFeatureVectors)
+	// {
+		
+	// }
 	
 	
 	private static int trainPerceptrons(Vector<Vector<Double>> trainFeatureVectors,
 			Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors) {
 			//Used to print out the content of each picture
-			for(Vector<Double> e : trainFeatureVectors)
-			{
-			System.out.println("~~~~~~~~~~~" + e);
-			}
+			// for(Vector<Double> e : trainFeatureVectors)
+			// {
+			// System.out.println("~~~~~~~~~~~" + e);
+			// }
 			Vector<Vector<Double>> perceptrons = new Vector<Vector<Double>>(Category.values().length); // One
 																									// perceptron
 																									// per
@@ -724,6 +729,8 @@ public class Lab3 {
 											// but that is OK.
 
 			// CODE NEEDED HERE!
+			
+			
 		//mark
 		//Go through all training inputs
 		for(Vector<Double> input: trainFeatureVectors){
@@ -760,9 +767,25 @@ public class Lab3 {
 			}
 		}
 		
+		//Get accuracy for test set
+		//count for correct predictions
+		int count  = 0;
 		
-
-			
+		//Get outputs
+		for(Vector<Double> test: testFeatureVectors)
+		{
+			for(int i=0; i<perceptrons.size();i++){
+				//Get the specific perceptron
+				Vector<Double> perceptron = perceptrons.get(i);
+				
+				double output = getOutPut(test, perceptron);
+				if(output == 1 && i == test.lastElement())
+					count++;
+			}	
+		}
+		//calculate accuracy
+		double accuracy = count*1.0/testFeatureVectors.size();
+		System.out.println(accuracy);
 			
 			
 
