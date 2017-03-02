@@ -42,10 +42,10 @@ public class Lab3 {
 	}; // We'll hardwire these in, but more robust code would not do so.
 
 	private static final Boolean useRGB = true; // If true, FOUR units are used
-													// per pixel: red, green,
-													// blue, and grey. If false,
-													// only ONE (the grey-scale
-													// value).
+												// per pixel: red, green,
+												// blue, and grey. If false,
+												// only ONE (the grey-scale
+												// value).
 	private static int unitsPerPixel = (useRGB ? 4 : 1); // If using RGB, use
 															// red+blue+green+grey.
 															// Otherwise just
@@ -53,11 +53,15 @@ public class Lab3 {
 															// value.
 
 	private static String modelToUse = "perceptrons"; // Should be one of {
-													// "perceptrons",
-													// "oneLayer", "deep" }; You
-													// might want to use this if
-													// you are trying approaches
-													// other than a Deep ANN.
+														// "perceptrons",
+														// "oneLayer", "deep" };
+														// You
+														// might want to use
+														// this if
+														// you are trying
+														// approaches
+														// other than a Deep
+														// ANN.
 	private static int inputVectorSize; // The provided code uses a 1D vector of
 										// input features. You might want to
 										// create a 2D version for your Deep ANN
@@ -147,11 +151,11 @@ public class Lab3 {
 	}
 
 	public static void loadDataset(Dataset dataset, File dir) {
-		//Used for printing out the file names
+		// Used for printing out the file names
 		// for (File file : dir.listFiles()) {
-			// System.out.println(file.getName());
+		// System.out.println(file.getName());
 		// }
-		
+
 		for (File file : dir.listFiles()) {
 			// check all files
 			if (!file.isFile() || !file.getName().endsWith(".jpg")) {
@@ -268,7 +272,7 @@ public class Lab3 {
 		Instance sampleImage = trainset.getImages().get(0); // Assume there is
 															// at least one
 															// train image!
-		
+
 		inputVectorSize = sampleImage.getWidth() * sampleImage.getHeight() * unitsPerPixel + 1; // The
 																								// '-1'
 																								// for
@@ -305,7 +309,7 @@ public class Lab3 {
 		// Instead code (to be written) will need to implicitly handle that
 		// extra feature.
 		System.out.println("\nThe input vector size is " + comma(inputVectorSize - 1) + ".\n");
-		//1D elements
+		// 1D elements
 		Vector<Vector<Double>> trainFeatureVectors = new Vector<Vector<Double>>(trainset.getSize());
 		Vector<Vector<Double>> tuneFeatureVectors = new Vector<Vector<Double>>(tuneset.getSize());
 		Vector<Vector<Double>> testFeatureVectors = new Vector<Vector<Double>>(testset.getSize());
@@ -330,7 +334,6 @@ public class Lab3 {
 		// Call your Deep ANN here. We recommend you create a separate class
 		// file for that during testing and debugging, but before submitting
 		// your code cut-and-paste that code here.
-		
 
 		if ("perceptrons".equals(modelToUse))
 			return trainPerceptrons(trainFeatureVectors, tuneFeatureVectors, testFeatureVectors); // This
@@ -602,52 +605,67 @@ public class Lab3 {
 	/////////////////////////////////////////////////////////////////////////////////////////////// is
 	/////////////////////////////////////////////////////////////////////////////////////////////// provided.
 
-	//Perceptron output calculation
-	//dealt with last element 
-	 private static double calcOutPut(Vector<Double> vals, Vector<Double> perceptron)
-	 {	
-		double output =0;
-		 //vals.size-1 because the last one for the input is label
-		 for(int i=0;i<vals.size()-1;i++)
-		 {
-			 output += vals.get(i)* perceptron.get(i);
-		 }
-		 //plus the bias node value
-		 output -=perceptron.lastElement();
-		 output = sigmoid(output);
-		 return output;
-
-	 }
-	 
-	 private static double getOutPut(Vector<Double> inputs, Vector<Double> perceptron)
-	 {
-		double output = calcOutPut(inputs, perceptron);
-		//If it is above the threshold the value output is 1 else 0
-		if(output > 0.5)
-			 output = 1;
-		 
-		else output = 0;
+	// Perceptron output calculation
+	// dealt with last element
+	private static double calcOutPut(Vector<Double> vals, Vector<Double> perceptron) {
+		double output = 0;
+		// vals.size-1 because the last one for the input is label
+		for (int i = 0; i < vals.size() - 1; i++) {
+			output += vals.get(i) * perceptron.get(i);
+		}
+		// plus the bias node value
+		output -= perceptron.lastElement();
+		output = sigmoid(output);
 		return output;
-	 }
-	 
-	 private static double sigmoid(double x) {
-		    return (1/( 1 + Math.pow(Math.E,(-1*x))));
-	 }
-	
-	// private static double calcAccuracy(Vector<Double> inFeatureVectors, Vector<Double> outFeatureVectors)
-	// {
-		
-	// }
-	
-	
+
+	}
+
+	private static double getOutPut(Vector<Double> inputs, Vector<Double> perceptron) {
+		double output = calcOutPut(inputs, perceptron);
+		// If it is above the threshold the value output is 1 else 0
+		if (output > 0.5)
+			output = 1;
+
+		else
+			output = 0;
+		return output;
+	}
+
+	private static double sigmoid(double x) {
+		return (1 / (1 + Math.pow(Math.E, (-1 * x))));
+	}
+
+	private static double calAccuracy(Vector<Vector<Double>> testVectors, Vector<Vector<Double>> perceptrons) {
+
+		// Get accuracy for test set
+		// count for correct predictions
+		int count = 0;
+		double accuracy = 0.0;
+		// Get outputs
+		for (Vector<Double> test : testVectors) {
+			for (int i = 0; i < perceptrons.size(); i++) {
+				// Get the specific perceptron
+				Vector<Double> perceptron = perceptrons.get(i);
+
+				double output = getOutPut(test, perceptron);
+				if (output == 1 && i == test.lastElement())
+					count++;
+			}
+		}
+		// calculate accuracy
+		accuracy = count * 1.0 / testVectors.size();
+		return accuracy;
+
+	}
+
 	private static int trainPerceptrons(Vector<Vector<Double>> trainFeatureVectors,
 			Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors) {
-			//Used to print out the content of each picture
-			// for(Vector<Double> e : trainFeatureVectors)
-			// {
-			// System.out.println("~~~~~~~~~~~" + e);
-			// }
-			Vector<Vector<Double>> perceptrons = new Vector<Vector<Double>>(Category.values().length); // One
+		// Used to print out the content of each picture
+		// for(Vector<Double> e : trainFeatureVectors)
+		// {
+		// System.out.println("~~~~~~~~~~~" + e);
+		// }
+		Vector<Vector<Double>> perceptrons = new Vector<Vector<Double>>(Category.values().length); // One
 																									// perceptron
 																									// per
 																									// category.
@@ -695,6 +713,10 @@ public class Lab3 {
 				best_tuneSetErrors = Integer.MAX_VALUE, testSetErrors = Integer.MAX_VALUE, best_epoch = -1,
 				testSetErrorsAtBestTune = Integer.MAX_VALUE;
 		long overallStart = System.currentTimeMillis(), start = overallStart;
+		// Count for early stopping
+		int count = 0;
+		double oldAccuracy = 0;
+		double accuracy = 0;
 
 		for (int epoch = 1; epoch <= maxEpochs /* && trainSetErrors > 0 */; epoch++) { // Might
 																						// still
@@ -729,65 +751,66 @@ public class Lab3 {
 											// but that is OK.
 
 			// CODE NEEDED HERE!
-			
-			
-		//mark
-		//Go through all training inputs
-		for(Vector<Double> input: trainFeatureVectors){
-			//Get the label
-			Double label = input.lastElement();
-			
-			for(int i=0; i<perceptrons.size();i++){
-					//Skip the last one because it is the label
-			Vector<Double> perceptron = perceptrons.get(i);
-			//Make the expected output of the correct percepton to be 1
-			double expectedLabel = 0.0;
-			if(i == label)
-				expectedLabel = 1.0;
-			
-			//Get the output
-			double output = calcOutPut(input, perceptron);
-			
-			//Calculate error
-			double error = expectedLabel - output;
-			
-			//Update weight of bias node
-			double changeOfWeights = perceptron.lastElement();
-			changeOfWeights += eta * error * (output) * (1-output) * -1;
-			perceptron.set(perceptron.size()-1, changeOfWeights);
-			
-			//Change weight of normal input node
-			for(int j=0;j<perceptron.size()-1;j++)
-			{
-				changeOfWeights = perceptron.get(j);
-				changeOfWeights += eta * error * (output) * (1-output) * input.get(j);
-				perceptron.set(j,changeOfWeights);
+
+			// mark
+			// Go through all training inputs
+
+			for (Vector<Double> input : trainFeatureVectors) {
+				// Get the label
+				Double label = input.lastElement();
+
+				for (int i = 0; i < perceptrons.size(); i++) {
+					// Skip the last one because it is the label
+					Vector<Double> perceptron = perceptrons.get(i);
+					// Make the expected output of the correct perceptron to be
+					// 1
+					double expectedLabel = 0.0;
+					if (i == label)
+						expectedLabel = 1.0;
+
+					// Get the output
+					double output = calcOutPut(input, perceptron);
+
+					// Calculate error
+					double error = expectedLabel - output;
+
+					// Update weight of bias node
+					double changeOfWeights = perceptron.lastElement();
+					changeOfWeights += eta * error * (output) * (1 - output) * -1;
+					perceptron.set(perceptron.size() - 1, changeOfWeights);
+
+					// Change weight of normal input node
+					for (int j = 0; j < perceptron.size() - 1; j++) {
+						changeOfWeights = perceptron.get(j);
+						changeOfWeights += eta * error * (output) * (1 - output) * input.get(j);
+						perceptron.set(j, changeOfWeights);
+					}
+
+				}
+
 			}
-			
+			// early stopping
+			oldAccuracy = accuracy;
+			accuracy = calAccuracy(tuneFeatureVectors, perceptrons);
+			// System.out.print("accuracy: " + accuracy);
+			// System.out.print(" accuracy < oldAccuracy" + (oldAccuracy > accuracy));
+			// System.out.print(" oldaccuracy: " + accuracy);
+			if (oldAccuracy > accuracy) {
+				count++;
+				double best_tuneSetErrorsBuffer = (1 - accuracy) * tuneFeatureVectors.size();
+
+				if (best_tuneSetErrorsBuffer < best_tuneSetErrors) {
+					best_epoch = epoch;
+					best_tuneSetErrors = (int) best_tuneSetErrorsBuffer;
+					testSetErrorsAtBestTune = (int) Math
+							.round((1 - calAccuracy(testFeatureVectors, perceptrons)) * testFeatureVectors.size());
+				}
+
+				if (count > 3 && accuracy > 0.55)
+					break;
+
 			}
-		}
-		
-		//Get accuracy for test set
-		//count for correct predictions
-		int count  = 0;
-		
-		//Get outputs
-		for(Vector<Double> test: testFeatureVectors)
-		{
-			for(int i=0; i<perceptrons.size();i++){
-				//Get the specific perceptron
-				Vector<Double> perceptron = perceptrons.get(i);
-				
-				double output = getOutPut(test, perceptron);
-				if(output == 1 && i == test.lastElement())
-					count++;
-			}	
-		}
-		//calculate accuracy
-		double accuracy = count*1.0/testFeatureVectors.size();
-		System.out.println(accuracy);
-			
-			
+			System.out.print("   count: " + count);
 
 			System.out.println("Done with Epoch # " + comma(epoch) + ".  Took "
 					+ convertMillisecondsToTimeSpan(System.currentTimeMillis() - start) + " ("
