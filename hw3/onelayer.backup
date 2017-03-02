@@ -1,8 +1,10 @@
+package hw3;
+
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javafx.util.Pair;
-import Lab3;
+import hw3.Lab3;
 
 /**
  * Do not modify.
@@ -14,7 +16,8 @@ public class oneLayer{
 	/**
 	 * Runs the tests for HW4
 	*/
-	public static void init(Vector<Vector<Double>> trainfeatureVectors, Vector<Vector<Double>> tunefeatureVectors,
+
+	public oneLayer(Vector<Vector<Double>> trainfeatureVectors, Vector<Vector<Double>> tunefeatureVectors,
 	Vector<Vector<Double>> testfeatureVectors, int hiddenNodeCount)
 	{
 		
@@ -81,7 +84,7 @@ public class oneLayer{
 	}
 		
 	// Reads a file and gets the list of instances
-	private static Vector<Instance1> getData(Vector<Double> featureVectors)
+	private static Vector<Instance1> getData(Vector<Vector<Double>> featureVectors)
 	{
 		Vector<Instance1> data=new Vector<Instance1>();
 		//Get attributes
@@ -89,18 +92,18 @@ public class oneLayer{
 		for(Vector<Double> featureVector: featureVectors)
 		{
 			Instance1 inst = new Instance1();
-			for(Vector <Double> attribute : featureVector)
+			for(Double attribute : featureVector)
 			{	
 				//Add the class value 
 				if(attribute == featureVector.lastElement())
 				{
 					for(int i =0; i<6; i++)
 					{
-						int classVal = (int)attribute;
+						int classVal = (int)Math.round(attribute);
 						if(i != (classVal))
-						inst.classValue.add(i,0);
+						inst.classValues.add(i,0);
 						else
-							inst.classValue.add(i,1);
+							inst.classValues.add(i,1);
 					}
 					
 				}
@@ -161,6 +164,7 @@ public class oneLayer{
 	// }
 		}
 	}
+	}
 /**
  * The main class that handles the entire network
  * Has multiple attributes each with its own use
@@ -171,11 +175,11 @@ public class oneLayer{
 
 
 class NNImpl {
-	public ArrayList<Node> inputNodes = null;// list of the output layer nodes.
-	public ArrayList<Node> hiddenNodes = null;// list of the hidden layer nodes
-	public ArrayList<Node> outputNodes = null;// list of the output layer nodes
+	public Vector<Node> inputNodes = null;// list of the output layer nodes.
+	public Vector<Node> hiddenNodes = null;// list of the hidden layer nodes
+	public Vector<Node> outputNodes = null;// list of the output layer nodes
 
-	public ArrayList<Instance1> trainingSet = null;// the training set
+	public Vector<Instance1> trainingSet = null;// the training set
 
 	Double learningRate = 1.0; // variable to store the learning rate
 	int maxEpoch = 1; // variable to store the maximum number of epochs
@@ -186,14 +190,14 @@ class NNImpl {
 	 * last node of both inputNodes and hiddenNodes will be bias nodes.
 	 */
 
-	public NNImpl(ArrayList<Instance1> trainingSet, int hiddenNodeCount, Double learningRate, int maxEpoch,
+	public NNImpl( Vector<Instance1> trainingSet, int hiddenNodeCount, Double learningRate, int maxEpoch,
 			Double[][] hiddenWeights, Double[][] outputWeights) {
 		this.trainingSet = trainingSet;
 		this.learningRate = learningRate;
 		this.maxEpoch = maxEpoch;
 
 		// input layer nodes
-		inputNodes = new ArrayList<Node>();
+		inputNodes = new Vector<Node>();
 		int inputNodeCount = trainingSet.get(0).attributes.size();
 		int outputNodeCount = trainingSet.get(0).classValues.size();
 		for (int i = 0; i < inputNodeCount; i++) {
@@ -206,7 +210,7 @@ class NNImpl {
 		inputNodes.add(biasToHidden);
 
 		// hidden layer nodes
-		hiddenNodes = new ArrayList<Node>();
+		hiddenNodes = new Vector<Node>();
 		for (int i = 0; i < hiddenNodeCount; i++) {
 			Node node = new Node(2);
 			// Connecting hidden layer nodes with input layer nodes
@@ -222,7 +226,7 @@ class NNImpl {
 		hiddenNodes.add(biasToOutput);
 
 		// Output node layer
-		outputNodes = new ArrayList<Node>();
+		outputNodes = new Vector<Node>();
 		for (int i = 0; i < outputNodeCount; i++) {
 			Node node = new Node(4);
 			// Connecting output layer nodes with hidden layer nodes
@@ -341,7 +345,7 @@ class NNImpl {
 
 class Node{
 	private int type=0; //0=input,1=biasToHidden,2=hidden,3=biasToOutput,4=Output
-	public ArrayList<NodeWeightPair> parents=null; //Array List that will contain the parents (including the bias node) with weights if applicable
+	public Vector<NodeWeightPair> parents=null; //Array List that will contain the parents (including the bias node) with weights if applicable
 		 
 	private Double inputValue=0.0;
 	private Double outputValue=0.0;
@@ -363,7 +367,7 @@ class Node{
 		
 		if (type==2 || type==4)
 		{
-			parents=new ArrayList<NodeWeightPair>();
+			parents=new Vector<NodeWeightPair>();
 		}
 	}
 	
@@ -448,8 +452,8 @@ class NodeWeightPair{
 
 /**
  * Holds data for a particular instance.
- * Attributes are represented as an ArrayList of Doubles
- * Class labels are represented as an ArrayList of Integers. For example,
+ * Attributes are represented as an Vector of Doubles
+ * Class labels are represented as an Vector of Integers. For example,
  * a 3-class instance will have classValues as [0 1 0] meaning this 
  * instance has class 1.
  * Do not modify
@@ -458,7 +462,7 @@ class NodeWeightPair{
 
 class Instance1{
 	public Vector<Double> attributes;
-	public Integer classValue;
+	public Vector<Integer> classValues;
 	
 	public Instance1()
 	{

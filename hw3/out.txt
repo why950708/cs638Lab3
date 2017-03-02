@@ -1,0 +1,29 @@
+The trainset contains 554 examples.  Took 390 milliseconds.
+The  testset contains 180 examples.  Took 91 milliseconds.
+The  tuneset contains 178 examples.  Took 87 milliseconds.
+
+The input vector size is 256.
+
+Converted 554 TRAIN examples to feature vectors. Took 9 milliseconds.
+Converted 180 TUNE  examples to feature vectors. Took 2 milliseconds.
+Converted 178 TEST  examples to feature vectors. Took 2 milliseconds.
+
+Time to start learning!
+Done with Epoch # 1.  Took 7 seconds (7 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 2.  Took 7 seconds (15 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 3.  Took 2 seconds (17 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 4.  Took 7 seconds (24 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 5.  Took 493 milliseconds (25 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 6.  Took 201 milliseconds (25 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 7.  Took 3 seconds (28 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 8.  Took 7 seconds (35 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50
+Done with Epoch # 9.  Took 4 seconds (39 seconds overall).
+***** PERCEPTRON: UseRGB = true, imageSize = 8x8, fraction of training examples used = 1.00, eta = 0.10, dropout rate = 0.50

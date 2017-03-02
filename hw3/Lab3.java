@@ -1,4 +1,4 @@
-
+package hw3;
 /**
  * @Author: Yuting Liu and Jude Shavlik.  
  * 
@@ -52,7 +52,7 @@ public class Lab3 {
 															// use the grey
 															// value.
 
-	private static String modelToUse = "perceptrons"; // Should be one of {
+	private static String modelToUse = "oneLayer"; // Should be one of {
 														// "perceptrons",
 														// "oneLayer", "deep" };
 														// You
@@ -62,7 +62,9 @@ public class Lab3 {
 														// approaches
 														// other than a Deep
 														// ANN.
-	private static int inputVectorSize; // The provided code uses a 1D vector of
+														
+	//Hongyi Wang maybe change it back to private when codes are copied in
+	protected static int inputVectorSize; // The provided code uses a 1D vector of
 										// input features. You might want to
 										// create a 2D version for your Deep ANN
 										// code.
@@ -72,8 +74,8 @@ public class Lab3 {
 										// The last element in this vector holds
 										// the 'teacher-provided' label of the
 										// example.
-
-	private static double eta = 0.1, fractionOfTrainingToUse = 1.00, dropoutRate = 0.50; // To
+	//Hongyi Wang Maybe change it back to private when copied back
+	protected static double eta = 0.1, fractionOfTrainingToUse = 1.00, dropoutRate = 0.50; // To
 																							// turn
 																							// off
 																							// drop
@@ -86,7 +88,8 @@ public class Lab3 {
 																							// a
 																							// neg
 																							// number).
-	private static int maxEpochs = 1000; // Feel free to set to a different
+	//Hongyi Wang Maybe change it back to private when copied back																					
+	protected static int maxEpochs = 1000; // Feel free to set to a different
 											// value.
 
 	public static void main(String[] args) {
@@ -211,8 +214,8 @@ public class Lab3 {
 			return Category.watch;
 		throw new Error("Unknown category: " + name);
 	}
-
-	private static double getRandomWeight(int fanin, int fanout) { // This is
+	//Hongyi Wang maybe change it back to private when codes are copied in
+	protected static double getRandomWeight(int fanin, int fanout) { // This is
 																	// one 'rule
 																	// of thumb'
 																	// for
@@ -843,7 +846,9 @@ public class Lab3 {
 													// checked and/or printed
 													// (which does slow down the
 													// code).
-	private static int numberOfHiddenUnits = 250;
+	//Hongyi Wang
+	//Maybe change it back to private after the codes are copied in
+	protected static int numberOfHiddenUnits = 250;
 
 	private static int trainOneHU(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors,
 			Vector<Vector<Double>> testFeatureVectors) {
@@ -885,6 +890,11 @@ public class Lab3 {
 											// but that is OK.
 
 			// CODE NEEDED HERE!
+			
+			
+			
+			
+			
 
 			System.out.println("Done with Epoch # " + comma(epoch) + ".  Took "
 					+ convertMillisecondsToTimeSpan(System.currentTimeMillis() - start) + " ("
