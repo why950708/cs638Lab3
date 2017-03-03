@@ -52,6 +52,7 @@ public class oneLayer {
 		readWeights(hiddenWeights, outputWeights);
 
 		learningRate = Lab3.eta;
+		
 
 		if (learningRate > 1 || learningRate <= 0) {
 			System.out.println("Incorrect value for learning rate\n");
@@ -60,6 +61,7 @@ public class oneLayer {
 
 		nn = new NNImpl(trainingSet, Lab3.numberOfHiddenUnits, learningRate, Lab3.maxEpochs, hiddenWeights,
 				outputWeights);
+		System.out.println(trainingSet.get(0).classValues.size());
 		// nn.train();
 
 		// Reading the testing set
@@ -281,9 +283,17 @@ class NNImpl {
 
 		double max = 0;
 		int index = 0;
+		
+		//Hongyi Wang try to print output for hidden nodes
+		for (int i = 0; i < this.inputNodes.size(); i++) {
+			Node hidden = this.inputNodes.get(i);
+			//System.out.print(" hidden output: " + hidden.getOutput() + " ");
+			//System.out.println(" hidden input: " + hidden.getInput() + " ");
+		}
 
 		for (int i = 0; i < this.outputNodes.size(); i++) {
 			Node output = this.outputNodes.get(i);
+			System.out.println(" ouput input: " + output.getInput() + " ");
 			if (output.getOutput() > max) {
 				max = output.getOutput();
 				index = i;
@@ -350,9 +360,10 @@ class NNImpl {
 			this.calculateOutputForInstance(inst); // forward
 			// Backward
 			for (int j = 0; j < this.outputNodes.size(); j++) {
-				int derivative = (outputNodes.get(j).getOutput() > 0) ? 1 : 0;
+				System.out.print("Actual output: " + outputNodes.get(j).getOutput());
+				int derivative = (outputNodes.get(j).getOutput() >= 0) ? 1 : 0;
 				double TO = inst.classValues.get(j) - outputNodes.get(j).getOutput();
-				System.out.print(" derivative: " +derivative+" ");
+				//System.out.print(" derivative: " +derivative+" ");
 				// Compute Wjk
 
 				for (NodeWeightPair pair : outputNodes.get(j).parents) {
@@ -373,7 +384,7 @@ class NNImpl {
 			}
 			// Compute Wij
 			for (int j = 0; j < this.hiddenNodes.size(); j++) {
-				double hiddenDerivative = (hiddenNodes.get(j).getSum() > 0) ? 1 : 0;
+				double hiddenDerivative = (hiddenNodes.get(j).getSum() >= 0) ? 1 : 0;
 				if (hiddenNodes.get(j).parents == null) {
 					continue;
 
@@ -382,7 +393,7 @@ class NNImpl {
 					double total = 0;
 					for (Node output : this.outputNodes) {
 						double TO = inst.classValues.get(this.outputNodes.indexOf(output)) - output.getOutput();
-						int derivative = (output.getSum() > 0) ? 1 : 0;
+						int derivative = (output.getSum() >= 0) ? 1 : 0;
 						total += derivative * TO * getHidenPairWeight(this.hiddenNodes.get(j), output).weight;
 					}
 					Node input = pair.node;
@@ -466,7 +477,13 @@ class Node {
 			this.inputValue = inputValue;
 		}
 	}
-
+	
+	
+	//Hongyi Wang for debugging get input
+	public double getInput()
+	{
+		return inputValue;
+	}
 	/**
 	 * Calculate the output of a ReLU node. You can assume that outputs of the
 	 * parent nodes have already been calculated You can get this value by using
@@ -482,6 +499,8 @@ class Node {
 			// TODO: add code here
 			double cache = 0;
 			for (NodeWeightPair nwp : this.parents) {
+				//Hongyi Wang print weight for debugging
+				if(type == 2) System.out.println(" weight" +nwp.node.getOutput() + " ");
 				cache += nwp.node.getOutput() * nwp.weight;
 
 			}

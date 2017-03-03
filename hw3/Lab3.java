@@ -911,14 +911,14 @@ public class Lab3 {
 			// Train the network once
 			// Integer[] oldval = ol.outputs;
 			//Hongyi Wang print output
-			// for (int i = 0; i < ol.outputs.length; i++) {
-				// {
-					// System.out.print(ol.outputs[i]);
-				// }
-			// }
+			for (int i = 0; i < ol.outputs.length; i++) {
+				{
+					System.out.print(ol.outputs[i]);
+				}
+			}
 			ol.nn.trainOneEpoch();
 			ol.printAccuracy();
-			System.out.print("Out: ");
+			//System.out.print("Out: ");
 			
 
 			System.out.println("Done with Epoch # " + comma(epoch) + ".  Took "

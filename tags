@@ -9,25 +9,25 @@ Dataset	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Da
 Dataset	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Dataset.java	9;"	kind:class	line:9	language:Java
 Instance	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	19;"	kind:class	line:19	language:Java
 Instance	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	30;"	kind:method	line:30	language:Java	class:Instance	access:public	signature:(BufferedImage image, String label)
-Instance1	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	544;"	kind:class	line:544	language:Java
-Instance1	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	548;"	kind:method	line:548	language:Java	class:Instance1	access:public	signature:()
+Instance1	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	551;"	kind:class	line:551	language:Java
+Instance1	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	555;"	kind:method	line:555	language:Java	class:Instance1	access:public	signature:()
 Lab3	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	27;"	kind:class	line:27	language:Java
 NNImpl	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	192;"	kind:class	line:192	language:Java
 NNImpl	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	209;"	kind:method	line:209	language:Java	class:NNImpl	access:public	signature:(Vector<Instance1> trainingSet, int hiddenNodeCount, Double learningRate, int maxEpoch, Double[][] hiddenWeights, Double[][] outputWeights)
-Node	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	434;"	kind:class	line:434	language:Java
-Node	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	447;"	kind:method	line:447	language:Java	class:Node	access:public	signature:(int type)
-NodeWeightPair	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	522;"	kind:class	line:522	language:Java
-NodeWeightPair	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	529;"	kind:method	line:529	language:Java	class:NodeWeightPair	access:public	signature:(Node node, Double weight)
+Node	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	441;"	kind:class	line:441	language:Java
+Node	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	454;"	kind:method	line:454	language:Java	class:Node	access:public	signature:(int type)
+NodeWeightPair	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	529;"	kind:class	line:529	language:Java
+NodeWeightPair	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	536;"	kind:method	line:536	language:Java	class:NodeWeightPair	access:public	signature:(Node node, Double weight)
 add	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Dataset.java	23;"	kind:method	line:23	language:Java	class:Dataset	access:public	signature:(Instance inst)
 airplanes	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	41;"	kind:enum constant	line:41	language:Java	enum:Lab3.Category	file:	access:public
-attributes	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	545;"	kind:field	line:545	language:Java	class:Instance1	access:public
+attributes	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	552;"	kind:field	line:552	language:Java	class:Instance1	access:public
 blue_channel	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	25;"	kind:field	line:25	language:Java	class:Instance	file:	access:private
 butterfly	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	41;"	kind:enum constant	line:41	language:Java	enum:Lab3.Category	file:	access:public
 calAccuracy	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	650;"	kind:method	line:650	language:Java	class:Lab3	file:	access:private	signature:(Vector<Vector<Double>> testVectors, Vector<Vector<Double>> perceptrons)
 calcOutPut	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	622;"	kind:method	line:622	language:Java	class:Lab3	file:	access:private	signature:(Vector<Double> vals, Vector<Double> perceptron)
-calculateOutput	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	478;"	kind:method	line:478	language:Java	class:Node	access:public	signature:()
+calculateOutput	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	485;"	kind:method	line:485	language:Java	class:Node	access:public	signature:()
 calculateOutputForInstance	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	267;"	kind:method	line:267	language:Java	class:NNImpl	access:public	signature:(Instance1 inst)
-classValues	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	546;"	kind:field	line:546	language:Java	class:Instance1	access:public
+classValues	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	553;"	kind:field	line:553	language:Java	class:Instance1	access:public
 comma	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	486;"	kind:method	line:486	language:Java	class:Lab3	access:public	signature:(int value)
 comma	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	491;"	kind:method	line:491	language:Java	class:Lab3	access:public	signature:(long value)
 comma	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	496;"	kind:method	line:496	language:Java	class:Lab3	access:public	signature:(double value)
@@ -49,15 +49,15 @@ getData	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\on
 getGrayImage	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	68;"	kind:method	line:68	language:Java	class:Instance	access:public	signature:()
 getGreenChannel	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	58;"	kind:method	line:58	language:Java	class:Instance	access:public	signature:()
 getHeight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	95;"	kind:method	line:95	language:Java	class:Instance	access:public	signature:()
-getHidenPairWeight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	417;"	kind:method	line:417	language:Java	class:NNImpl	file:	access:private	signature:(Node nodeIn, Node output)
+getHidenPairWeight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	424;"	kind:method	line:424	language:Java	class:NNImpl	file:	access:private	signature:(Node nodeIn, Node output)
 getImages	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Dataset.java	28;"	kind:method	line:28	language:Java	class:Dataset	access:public	signature:()
 getLabel	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	99;"	kind:method	line:99	language:Java	class:Instance	access:public	signature:()
 getOutPut	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	635;"	kind:method	line:635	language:Java	class:Lab3	file:	access:private	signature:(Vector<Double> inputs, Vector<Double> perceptron)
-getOutput	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	502;"	kind:method	line:502	language:Java	class:Node	access:public	signature:()
+getOutput	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	509;"	kind:method	line:509	language:Java	class:Node	access:public	signature:()
 getRandomWeight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	223;"	kind:method	line:223	language:Java	class:Lab3	access:protected	signature:(int fanin, int fanout)
 getRedChannel	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	53;"	kind:method	line:53	language:Java	class:Instance	access:public	signature:()
 getSize	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Dataset.java	18;"	kind:method	line:18	language:Java	class:Dataset	access:public	signature:()
-getSum	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	497;"	kind:method	line:497	language:Java	class:Node	access:public	signature:()
+getSum	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	504;"	kind:method	line:504	language:Java	class:Node	access:public	signature:()
 getWidth	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	91;"	kind:method	line:91	language:Java	class:Instance	access:public	signature:()
 grand_piano	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	41;"	kind:enum constant	line:41	language:Java	enum:Lab3.Category	file:	access:public
 gray_image	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	25;"	kind:field	line:25	language:Java	class:Instance	file:	access:private
@@ -73,7 +73,7 @@ hw3	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLay
 image	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	21;"	kind:field	line:21	language:Java	class:Instance	file:	access:private
 imageSize	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	29;"	kind:field	line:29	language:Java	class:Lab3	file:	access:private
 inputNodes	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	193;"	kind:field	line:193	language:Java	class:NNImpl	access:public
-inputValue	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	442;"	kind:field	line:442	language:Java	class:Node	file:	access:private
+inputValue	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	449;"	kind:field	line:449	language:Java	class:Node	file:	access:private
 inputVectorSize	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	67;"	kind:field	line:67	language:Java	class:Lab3	access:protected
 instances	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Dataset.java	11;"	kind:field	line:11	language:Java	class:Dataset	file:	access:private
 label	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	22;"	kind:field	line:22	language:Java	class:Instance	file:	access:private
@@ -88,18 +88,18 @@ millisecInHour	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition
 millisecInMinute	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	455;"	kind:field	line:455	language:Java	class:Lab3	file:	access:private
 modelToUse	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	55;"	kind:field	line:55	language:Java	class:Lab3	file:	access:private
 nn	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	32;"	kind:field	line:32	language:Java	class:oneLayer	access:default
-node	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	523;"	kind:field	line:523	language:Java	class:NodeWeightPair	access:public
+node	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	530;"	kind:field	line:530	language:Java	class:NodeWeightPair	access:public
 numberOfHiddenUnits	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	862;"	kind:field	line:862	language:Java	class:Lab3	access:protected
-oldWeight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	525;"	kind:field	line:525	language:Java	class:NodeWeightPair	access:public
+oldWeight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	532;"	kind:field	line:532	language:Java	class:NodeWeightPair	access:public
 oneLayer	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	15;"	kind:class	line:15	language:Java
 oneLayer	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	34;"	kind:method	line:34	language:Java	class:oneLayer	access:public	signature:(Vector<Vector<Double>> trainfeatureVectors, Vector<Vector<Double>> tunefeatureVectors, Vector<Vector<Double>> testfeatureVectors)
 outputNodes	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	195;"	kind:field	line:195	language:Java	class:NNImpl	access:public
-outputValue	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	443;"	kind:field	line:443	language:Java	class:Node	file:	access:private
+outputValue	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	450;"	kind:field	line:450	language:Java	class:Node	file:	access:private
 outputWeights	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	26;"	kind:field	line:26	language:Java	class:oneLayer	access:default
 outputWeightss	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	199;"	kind:field	line:199	language:Java	class:NNImpl	access:default
 outputs	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	30;"	kind:field	line:30	language:Java	class:oneLayer	access:default
 padLeft	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	501;"	kind:method	line:501	language:Java	class:Lab3	access:public	signature:(String value, int width)
-parents	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	436;"	kind:field	line:436	language:Java	class:Node	access:public
+parents	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	443;"	kind:field	line:443	language:Java	class:Node	access:public
 permute	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	535;"	kind:method	line:535	language:Java	class:Lab3	access:public	signature:(Vector<T> vector)
 printAccuracy	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	93;"	kind:method	line:93	language:Java	class:oneLayer	access:protected	signature:()
 random	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	578;"	kind:method	line:578	language:Java	class:Lab3	access:public	signature:()
@@ -108,25 +108,25 @@ randomInInterval	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecogniti
 randomInstance	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	567;"	kind:field	line:567	language:Java	class:Lab3	access:public
 readWeights	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	144;"	kind:method	line:144	language:Java	class:oneLayer	access:public	signature:(Double[][] hiddenWeights, Double[][] outputWeights)
 red_channel	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	25;"	kind:field	line:25	language:Java	class:Instance	file:	access:private
-reportOneLayerConfig	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	939;"	kind:method	line:939	language:Java	class:Lab3	file:	access:private	signature:()
+reportOneLayerConfig	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	942;"	kind:method	line:942	language:Java	class:Lab3	file:	access:private	signature:()
 reportPerceptronConfig	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	845;"	kind:method	line:845	language:Java	class:Lab3	file:	access:private	signature:()
-setInput	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	463;"	kind:method	line:463	language:Java	class:Node	access:public	signature:(Double inputValue)
+setInput	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	470;"	kind:method	line:470	language:Java	class:Node	access:public	signature:(Double inputValue)
 sigmoid	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	646;"	kind:method	line:646	language:Java	class:Lab3	file:	access:private	signature:(double x)
 starfish	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	41;"	kind:enum constant	line:41	language:Java	enum:Lab3.Category	file:	access:public
-sum	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	444;"	kind:field	line:444	language:Java	class:Node	file:	access:private
+sum	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	451;"	kind:field	line:451	language:Java	class:Node	file:	access:private
 testSet	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	22;"	kind:field	line:22	language:Java	class:oneLayer	access:default
-train	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	302;"	kind:method	line:302	language:Java	class:NNImpl	access:public	signature:()
+train	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	308;"	kind:method	line:308	language:Java	class:NNImpl	access:public	signature:()
 trainANN	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	283;"	kind:method	line:283	language:Java	class:Lab3	file:	access:private	signature:(Dataset trainset, Dataset tuneset, Dataset testset)
-trainDeep	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	964;"	kind:method	line:964	language:Java	class:Lab3	file:	access:private	signature:(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors)
-trainOneEpoch	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	347;"	kind:method	line:347	language:Java	class:NNImpl	access:public	signature:()
+trainDeep	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	967;"	kind:method	line:967	language:Java	class:Lab3	file:	access:private	signature:(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors)
+trainOneEpoch	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	352;"	kind:method	line:352	language:Java	class:NNImpl	access:public	signature:()
 trainOneHU	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	864;"	kind:method	line:864	language:Java	class:Lab3	file:	access:private	signature:(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors)
 trainPerceptrons	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	673;"	kind:method	line:673	language:Java	class:Lab3	file:	access:private	signature:(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors, Vector<Vector<Double>> testFeatureVectors)
 trainingSet	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	197;"	kind:field	line:197	language:Java	class:NNImpl	access:public
 trainingSet	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	20;"	kind:field	line:20	language:Java	class:oneLayer	access:default
 truncate	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	517;"	kind:method	line:517	language:Java	class:Lab3	access:public	signature:(double d, int decimals)
-type	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	435;"	kind:field	line:435	language:Java	class:Node	file:	access:private
+type	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	442;"	kind:field	line:442	language:Java	class:Node	file:	access:private
 unitsPerPixel	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	49;"	kind:field	line:49	language:Java	class:Lab3	file:	access:private
 useRGB	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	44;"	kind:field	line:44	language:Java	class:Lab3	file:	access:private
 watch	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Lab3.java	41;"	kind:enum constant	line:41	language:Java	enum:Lab3.Category	file:	access:public
-weight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	524;"	kind:field	line:524	language:Java	class:NodeWeightPair	access:public
+weight	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\oneLayer.java	531;"	kind:field	line:531	language:Java	class:NodeWeightPair	access:public
 width	C:\Users\Oliver HY Wang\Box Sync\CS638\CS638Lab3-imageRecognition\hw3\Instance.java	23;"	kind:field	line:23	language:Java	class:Instance	file:	access:private
