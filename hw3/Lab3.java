@@ -53,28 +53,32 @@ public class Lab3 {
 															// value.
 
 	private static String modelToUse = "oneLayer"; // Should be one of {
-														// "perceptrons",
-														// "oneLayer", "deep" };
-														// You
-														// might want to use
-														// this if
-														// you are trying
-														// approaches
-														// other than a Deep
-														// ANN.
-														
-	//Hongyi Wang maybe change it back to private when codes are copied in
-	protected static int inputVectorSize; // The provided code uses a 1D vector of
-										// input features. You might want to
-										// create a 2D version for your Deep ANN
-										// code.
-										// Or use the get2DfeatureValue()
-										// 'accessor function' that maps 2D
-										// coordinates into the 1D vector.
-										// The last element in this vector holds
-										// the 'teacher-provided' label of the
-										// example.
-	//Hongyi Wang Maybe change it back to private when copied back
+													// "perceptrons",
+													// "oneLayer", "deep" };
+													// You
+													// might want to use
+													// this if
+													// you are trying
+													// approaches
+													// other than a Deep
+													// ANN.
+
+	// Hongyi Wang maybe change it back to private when codes are copied in
+	protected static int inputVectorSize; // The provided code uses a 1D vector
+											// of
+											// input features. You might want to
+											// create a 2D version for your Deep
+											// ANN
+											// code.
+											// Or use the get2DfeatureValue()
+											// 'accessor function' that maps 2D
+											// coordinates into the 1D vector.
+											// The last element in this vector
+											// holds
+											// the 'teacher-provided' label of
+											// the
+											// example.
+	// Hongyi Wang Maybe change it back to private when copied back
 	protected static double eta = 0.1, fractionOfTrainingToUse = 1.00, dropoutRate = 0.50; // To
 																							// turn
 																							// off
@@ -88,7 +92,7 @@ public class Lab3 {
 																							// a
 																							// neg
 																							// number).
-	//Hongyi Wang Maybe change it back to private when copied back																					
+	// Hongyi Wang Maybe change it back to private when copied back
 	protected static int maxEpochs = 1000; // Feel free to set to a different
 											// value.
 
@@ -214,19 +218,24 @@ public class Lab3 {
 			return Category.watch;
 		throw new Error("Unknown category: " + name);
 	}
-	//Hongyi Wang maybe change it back to private when codes are copied in
+
+	// Hongyi Wang maybe change it back to private when codes are copied in
 	protected static double getRandomWeight(int fanin, int fanout) { // This is
-																	// one 'rule
-																	// of thumb'
-																	// for
-																	// initializing
-																	// weights.
-																	// Fine for
-																	// perceptrons
-																	// and
-																	// one-layer
-																	// ANN at
-																	// least.
+																		// one
+																		// 'rule
+																		// of
+																		// thumb'
+																		// for
+																		// initializing
+																		// weights.
+																		// Fine
+																		// for
+																		// perceptrons
+																		// and
+																		// one-layer
+																		// ANN
+																		// at
+																		// least.
 		double range = Math.max(Double.MIN_VALUE, 4.0 / Math.sqrt(6.0 * (fanin + fanout)));
 		return (2.0 * random() - 1.0) * range;
 	}
@@ -796,7 +805,8 @@ public class Lab3 {
 			oldAccuracy = accuracy;
 			accuracy = calAccuracy(tuneFeatureVectors, perceptrons);
 			// System.out.print("accuracy: " + accuracy);
-			// System.out.print(" accuracy < oldAccuracy" + (oldAccuracy > accuracy));
+			// System.out.print(" accuracy < oldAccuracy" + (oldAccuracy >
+			// accuracy));
 			// System.out.print(" oldaccuracy: " + accuracy);
 			if (oldAccuracy > accuracy) {
 				count++;
@@ -846,9 +856,10 @@ public class Lab3 {
 													// checked and/or printed
 													// (which does slow down the
 													// code).
-	//Hongyi Wang
-	//Maybe change it back to private after the codes are copied in
-	protected static int numberOfHiddenUnits = 250;
+	// Hongyi Wang
+	// Maybe change it back to private after the codes are copied in
+	// Initial value 250
+	protected static int numberOfHiddenUnits = 10;
 
 	private static int trainOneHU(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors,
 			Vector<Vector<Double>> testFeatureVectors) {
@@ -856,6 +867,13 @@ public class Lab3 {
 		int trainSetErrors = Integer.MAX_VALUE, tuneSetErrors = Integer.MAX_VALUE,
 				best_tuneSetErrors = Integer.MAX_VALUE, testSetErrors = Integer.MAX_VALUE, best_epoch = -1,
 				testSetErrorsAtBestTune = Integer.MAX_VALUE;
+
+		// Create instance for one Layer
+		oneLayer ol = new oneLayer(trainFeatureVectors, tuneFeatureVectors, testFeatureVectors);
+		// for (int i = 0; i<ol.outputs.length;i++)
+		// {
+		// System.out.println("output "+ i +" "+ ol.outputs[i]);
+		// }
 
 		for (int epoch = 1; epoch <= maxEpochs /* && trainSetErrors > 0 */; epoch++) { // Might
 																						// still
@@ -890,10 +908,17 @@ public class Lab3 {
 											// but that is OK.
 
 			// CODE NEEDED HERE!
-			
-			
-			
-			
+			// Train the network once
+			// Integer[] oldval = ol.outputs;
+			//Hongyi Wang print output
+			// for (int i = 0; i < ol.outputs.length; i++) {
+				// {
+					// System.out.print(ol.outputs[i]);
+				// }
+			// }
+			ol.nn.trainOneEpoch();
+			ol.printAccuracy();
+			System.out.print("Out: ");
 			
 
 			System.out.println("Done with Epoch # " + comma(epoch) + ".  Took "
