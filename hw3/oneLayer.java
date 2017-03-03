@@ -52,7 +52,6 @@ public class oneLayer {
 		readWeights(hiddenWeights, outputWeights);
 
 		learningRate = Lab3.eta;
-		
 
 		if (learningRate > 1 || learningRate <= 0) {
 			System.out.println("Incorrect value for learning rate\n");
@@ -66,40 +65,45 @@ public class oneLayer {
 
 		// Reading the testing set
 		testSet = getData(testfeatureVectors);
+		
+		//Hongyi Wang for printing training set accuracy
+		//outputs = new Integer[testSet.size()];
+		outputs = new Integer[trainingSet.size()];
 
-		outputs = new Integer[testSet.size()];
+		
+		//Hongyi Wang saved for later maybe
+		// int correct = 0;
+		// for (int i = 0; i < testSet.size(); i++) {
+			//Getting output from network
+			// outputs[i] = nn.calculateOutputForInstance(testSet.get(i));
+			// int actual_idx = -1;
+			// for (int j = 0; j < testSet.get(i).classValues.size(); j++) {
+				// if (testSet.get(i).classValues.get(j) > 0.5)
+					// actual_idx = j;
+			// }
 
-		int correct = 0;
-		for (int i = 0; i < testSet.size(); i++) {
-			// Getting output from network
-			outputs[i] = nn.calculateOutputForInstance(testSet.get(i));
-			int actual_idx = -1;
-			for (int j = 0; j < testSet.get(i).classValues.size(); j++) {
-				if (testSet.get(i).classValues.get(j) > 0.5)
-					actual_idx = j;
-			}
-
-			if (outputs[i] == actual_idx) {
-				correct++;
-			} else {
+			// if (outputs[i] == actual_idx) {
+				// correct++;
+			// } else {
 				// System.out.println(i + "th instance got an misclassification,
 				// expected: " + actual_idx + ". But actual:" + outputs[i]);
-			}
-		}
+			// }
+		// }
 
 		// System.out.println("Total instances: " + testSet.size());
 		// System.out.println("Correctly classified: "+correct);
 
 	}
 
-	protected void printAccuracy() {
+	protected int printAccuracy() {
 		int correct = 0;
-		for (int i = 0; i < testSet.size(); i++) {
+		System.out.print(trainingSet.size());
+		for (int i = 0; i < trainingSet.size(); i++) {
 			// Getting output from network
-			outputs[i] = nn.calculateOutputForInstance(testSet.get(i));
+			outputs[i] = nn.calculateOutputForInstance(trainingSet.get(i));
 			int actual_idx = -1;
-			for (int j = 0; j < testSet.get(i).classValues.size(); j++) {
-				if (testSet.get(i).classValues.get(j) > 0.5)
+			for (int j = 0; j < trainingSet.get(i).classValues.size(); j++) {
+				if (trainingSet.get(i).classValues.get(j) > 0.5)
 					actual_idx = j;
 			}
 
@@ -111,6 +115,7 @@ public class oneLayer {
 			}
 		}
 		System.out.println("Correct: " + correct);
+		return correct;
 	}
 
 	// Reads a file and gets the list of instances
@@ -126,9 +131,9 @@ public class oneLayer {
 					for (int i = 0; i < 6; i++) {
 						int classVal = (int) Math.round(attribute);
 						if (i != (classVal))
-							inst.classValues.add(i, 0);
+							inst.classValues.add(0);
 						else
-							inst.classValues.add(i, 1);
+							inst.classValues.add(1);
 					}
 
 				}
@@ -145,12 +150,13 @@ public class oneLayer {
 	// Gets weights randomly
 	public static void readWeights(Double[][] hiddenWeights, Double[][] outputWeights) {
 		// Use the given random weight generator in Lab3
-
+		 Random r = new Random();
 		for (int i = 0; i < hiddenWeights.length; i++) {
 			for (int j = 0; j < hiddenWeights[i].length; j++) {
 				// Fan in for the hidden layer is the number of inputs, fan out
 				// is the num of outputs
-				hiddenWeights[i][j] = Lab3.getRandomWeight(Lab3.inputVectorSize, outputWeights.length);
+				//hiddenWeights[i][j] = Lab3.getRandomWeight(Lab3.inputVectorSize, outputWeights.length);
+				hiddenWeights[i][j] = r.nextDouble()*0.01;
 			}
 		}
 
@@ -158,7 +164,8 @@ public class oneLayer {
 			for (int j = 0; j < outputWeights[i].length; j++) {
 				// Fan in for the output layer is the number of hidden layer,
 				// fan out is 1
-				outputWeights[i][j] = Lab3.getRandomWeight(hiddenWeights.length, 1);
+				//outputWeights[i][j] = Lab3.getRandomWeight(hiddenWeights.length, 1);
+				outputWeights[i][j] = r.nextDouble()*0.01;
 			}
 
 			// The original method
@@ -271,6 +278,10 @@ class NNImpl {
 		// Get the input from the instance
 		for (int i = 0; i < inst.attributes.size(); i++) {
 			this.inputNodes.get(i).setInput(inst.attributes.get(i));
+			// Hongyi Wang debugging
+			// if(inputNodes.get(i).getOutput()>1)
+			// System.out.print("intput value: " +
+			// inputNodes.get(i).getOutput());
 		}
 
 		for (Node hiddenNode : this.hiddenNodes) {
@@ -283,17 +294,18 @@ class NNImpl {
 
 		double max = 0;
 		int index = 0;
-		
-		//Hongyi Wang try to print output for hidden nodes
+
+		// Hongyi Wang try to print output for hidden nodes
 		for (int i = 0; i < this.inputNodes.size(); i++) {
 			Node hidden = this.inputNodes.get(i);
-			//System.out.print(" hidden output: " + hidden.getOutput() + " ");
-			//System.out.println(" hidden input: " + hidden.getInput() + " ");
+			// System.out.print(" hidden output: " + hidden.getOutput() + " ");
+			// System.out.println(" hidden input: " + hidden.getInput() + " ");
 		}
 
 		for (int i = 0; i < this.outputNodes.size(); i++) {
 			Node output = this.outputNodes.get(i);
-			System.out.println(" ouput input: " + output.getInput() + " ");
+			// Hongyi Wang debugging
+			// System.out.println(" ouput input: " + output.getInput() + " ");
 			if (output.getOutput() > max) {
 				max = output.getOutput();
 				index = i;
@@ -340,7 +352,7 @@ class NNImpl {
 						for (Node output : this.outputNodes) {
 							double TO = inst.classValues.get(this.outputNodes.indexOf(output)) - output.getOutput();
 							int derivative = (output.getSum() > 0) ? 1 : 0;
-							total += derivative * TO * getHidenPairWeight(this.hiddenNodes.get(j), output).weight;
+							total += derivative * TO * getHiddenPairWeight(this.hiddenNodes.get(j), output).weight;
 						}
 						Node input = pair.node;
 						double weight = this.learningRate * input.getOutput() * hiddenDerivative * total;
@@ -354,20 +366,25 @@ class NNImpl {
 	// Train teh neural network for one epochs
 
 	public void trainOneEpoch() {
+		//Randomnize the set to prevent overfitting
+		Lab3.permute(trainingSet);
 		double sum = 0;
 
 		for (Instance1 inst : this.trainingSet) {
 			this.calculateOutputForInstance(inst); // forward
 			// Backward
 			for (int j = 0; j < this.outputNodes.size(); j++) {
-				System.out.print("Actual output: " + outputNodes.get(j).getOutput());
+				// Hongyi Wang debugging
+				// System.out.println("Actual output: " +
+				// outputNodes.get(j).getOutput()+ " number: "+ j);
 				int derivative = (outputNodes.get(j).getOutput() >= 0) ? 1 : 0;
-				double TO = inst.classValues.get(j) - outputNodes.get(j).getOutput();
-				//System.out.print(" derivative: " +derivative+" ");
+				double error = inst.classValues.get(j) - outputNodes.get(j).getOutput();
+
+				
 				// Compute Wjk
 
 				for (NodeWeightPair pair : outputNodes.get(j).parents) {
-					double weight = this.learningRate * pair.node.getOutput() * derivative * TO;
+					double weight = this.learningRate * pair.node.getOutput() * derivative * error;
 					pair.weight += weight;
 					//// Hongyi Wang to print the node 0 weight to check if
 					// anything is changing
@@ -392,9 +409,9 @@ class NNImpl {
 				for (NodeWeightPair pair : hiddenNodes.get(j).parents) {
 					double total = 0;
 					for (Node output : this.outputNodes) {
-						double TO = inst.classValues.get(this.outputNodes.indexOf(output)) - output.getOutput();
-						int derivative = (output.getSum() >= 0) ? 1 : 0;
-						total += derivative * TO * getHidenPairWeight(this.hiddenNodes.get(j), output).weight;
+						double error = inst.classValues.get(this.outputNodes.indexOf(output)) - output.getOutput();
+						double derivativeSigmoid = (output.getOutput()*(1-output.getOutput()));
+						total += derivativeSigmoid * error * getHiddenPairWeight(this.hiddenNodes.get(j), output).weight;
 					}
 					Node input = pair.node;
 					double weight = this.learningRate * input.getOutput() * hiddenDerivative * total;
@@ -411,21 +428,21 @@ class NNImpl {
 			}
 
 		}
-		
-		//Hongyi Wang print output weightss
+
+		// Hongyi Wang print output weightss
 		// for(int i = 0; i<outputWeightss.length;i++)
 		// {
-			// for(int j =0;j<outputWeightss[0].length;j++)
-			// {
-				// System.out.print(outputWeightss[i][j]+" ");
-			// }
-			// System.out.println();
+		// for(int j =0;j<outputWeightss[0].length;j++)
+		// {
+		// System.out.print(outputWeightss[i][j]+" ");
+		// }
+		// System.out.println();
 		// }
 		// System.out.println("here!");
-		
+
 	}
 
-	private NodeWeightPair getHidenPairWeight(Node nodeIn, Node output) {
+	private NodeWeightPair getHiddenPairWeight(Node nodeIn, Node output) {
 		// TODO Auto-generated method stub
 		for (NodeWeightPair pair : output.parents) {
 			if (pair.node.equals(nodeIn))
@@ -477,13 +494,12 @@ class Node {
 			this.inputValue = inputValue;
 		}
 	}
-	
-	
-	//Hongyi Wang for debugging get input
-	public double getInput()
-	{
+
+	// Hongyi Wang for debugging get input
+	public double getInput() {
 		return inputValue;
 	}
+
 	/**
 	 * Calculate the output of a ReLU node. You can assume that outputs of the
 	 * parent nodes have already been calculated You can get this value by using
@@ -499,20 +515,29 @@ class Node {
 			// TODO: add code here
 			double cache = 0;
 			for (NodeWeightPair nwp : this.parents) {
-				//Hongyi Wang print weight for debugging
-				if(type == 2) System.out.println(" weight" +nwp.node.getOutput() + " ");
+				// Hongyi Wang print weight for debugging
+				// if(type == 2) System.out.println(" weight"
+				// +nwp.node.getOutput() + " ");
 				cache += nwp.node.getOutput() * nwp.weight;
 
 			}
 			this.sum = cache;
 
-			if (cache < 0)
+			if (cache < 0 && type == 2)
 				cache = 0;
-
+			//Sigmoid for output too prevent weight explosion
+			if (type == 4)
+				cache = sigmoid(cache);
+			
 			this.outputValue = cache;
 		}
 	}
-
+	
+	public double sigmoid(double x)
+	{
+		return 1.0/(1+Math.exp(-x));
+	}
+	
 	public double getSum() {
 		return sum;
 	}

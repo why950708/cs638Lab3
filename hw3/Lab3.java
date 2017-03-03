@@ -26,7 +26,7 @@ import javax.imageio.ImageIO;
 
 public class Lab3 {
 
-	private static int imageSize = 8; // Images are imageSize x imageSize. The
+	private static int imageSize = 128; // Images are imageSize x imageSize. The
 										// provided data is 128x128, but this
 										// can be resized by setting this value
 										// (or passing in an argument).
@@ -79,7 +79,7 @@ public class Lab3 {
 											// the
 											// example.
 	// Hongyi Wang Maybe change it back to private when copied back
-	protected static double eta = 0.1, fractionOfTrainingToUse = 1.00, dropoutRate = 0.50; // To
+	protected static double eta = 0.01, fractionOfTrainingToUse = 1.00, dropoutRate = 0.50; // To
 																							// turn
 																							// off
 																							// drop
@@ -869,6 +869,8 @@ public class Lab3 {
 				testSetErrorsAtBestTune = Integer.MAX_VALUE;
 
 		// Create instance for one Layer
+		//Hongyi Wang put permute here for debug;
+		permute(trainFeatureVectors);
 		oneLayer ol = new oneLayer(trainFeatureVectors, tuneFeatureVectors, testFeatureVectors);
 		// for (int i = 0; i<ol.outputs.length;i++)
 		// {
@@ -911,14 +913,20 @@ public class Lab3 {
 			// Train the network once
 			// Integer[] oldval = ol.outputs;
 			//Hongyi Wang print output
-			for (int i = 0; i < ol.outputs.length; i++) {
-				{
-					System.out.print(ol.outputs[i]);
-				}
-			}
+			// for (int i = 0; i < ol.outputs.length; i++) {
+				// {
+					// System.out.print(ol.outputs[i]);
+				// }
+			// }
 			ol.nn.trainOneEpoch();
-			ol.printAccuracy();
-			//System.out.print("Out: ");
+			int correct = ol.printAccuracy();
+			int max = 0;
+			if(correct>500) break;
+			else if(correct > max)
+			{
+				max = correct;
+			}
+			System.out.print(" Max: " + max+" ");
 			
 
 			System.out.println("Done with Epoch # " + comma(epoch) + ".  Took "
