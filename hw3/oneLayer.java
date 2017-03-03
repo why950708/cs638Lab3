@@ -1,6 +1,8 @@
 package hw3;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import javafx.util.Pair;
@@ -399,32 +401,15 @@ class NNImpl {
 				}
 
 			}
+			ExecutorService executor = Executors.newCachedThreadPool();
 			// Compute Wij
 			for (int j = 0; j < this.hiddenNodes.size(); j++) {
-				double hiddenDerivative = (hiddenNodes.get(j).getSum() >= 0) ? 1 : 0;
+				int hiddenDerivative = (hiddenNodes.get(j).getSum() >= 0) ? 1 : 0;
 				if (hiddenNodes.get(j).parents == null) {
 					continue;
-
 				}
-				for (NodeWeightPair pair : hiddenNodes.get(j).parents) {
-					double total = 0;
-					for (Node output : this.outputNodes) {
-						double error = inst.classValues.get(this.outputNodes.indexOf(output)) - output.getOutput();
-						double derivativeSigmoid = (output.getOutput()*(1-output.getOutput()));
-						total += derivativeSigmoid * error * getHiddenPairWeight(this.hiddenNodes.get(j), output).weight;
-					}
-					Node input = pair.node;
-					double weight = this.learningRate * input.getOutput() * hiddenDerivative * total;
-					pair.weight += weight;
-					//// Hongyi Wang to print the node 0 weight to check if
-					//// anything is changing
-					// NodeWeightPair pair1 = hiddenNodes.get(0).parents.get(0);
-					// {
-
-					// System.out.println("Weight for 0 node: "+ pair1.weight);
-					// System.out.println("Change of weight: "+weight);
-					// }
-				}
+				executor.execute(new tryThreads(j, hiddenDerivative,  outputNodes, learningRate, inst,hiddenNodes));
+				
 			}
 
 		}
@@ -442,7 +427,7 @@ class NNImpl {
 
 	}
 
-	private NodeWeightPair getHiddenPairWeight(Node nodeIn, Node output) {
+	protected static NodeWeightPair getHiddenPairWeight(Node nodeIn, Node output) {
 		// TODO Auto-generated method stub
 		for (NodeWeightPair pair : output.parents) {
 			if (pair.node.equals(nodeIn))
@@ -595,3 +580,43 @@ class Instance1 {
 	}
 
 }
+
+
+
+
+//Hongyi Wang utilizing threads try to speed up the program on multicore system
+	class tryThreads  implements Runnable 
+	{
+		int j;
+		int hiddenDerivative;
+		double error;
+		Vector<Node> outputNodes;
+		double learningRate;
+		Instance1 inst;
+		Vector<Node> hiddenNodes;
+		
+		public tryThreads (int j, int hiddenDerivative,  Vector<Node> outputNodes, double learningRate, Instance1 inst, Vector<Node> hiddenNodes)
+		{
+			this.j = j;
+			this.hiddenDerivative = hiddenDerivative;
+			this.error = error;
+			this.outputNodes = outputNodes;
+			this.hiddenNodes = hiddenNodes;
+			this.learningRate = learningRate;
+			this.inst = inst;
+		}
+		public void run()
+		{
+			for (NodeWeightPair pair : hiddenNodes.get(j).parents) {
+					double total = 0;
+					for (Node output : this.outputNodes) {
+						double error = inst.classValues.get(this.outputNodes.indexOf(output)) - output.getOutput();
+						double derivativeSigmoid = (output.getOutput()*(1-output.getOutput()));
+						total += derivativeSigmoid * error * NNImpl.getHiddenPairWeight(this.hiddenNodes.get(j), output).weight;
+					}
+					Node input = pair.node;
+					double weight = this.learningRate * input.getOutput() * hiddenDerivative * total;
+					pair.weight += weight;
+				}
+		}
+	}

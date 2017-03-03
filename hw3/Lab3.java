@@ -26,7 +26,7 @@ import javax.imageio.ImageIO;
 
 public class Lab3 {
 
-	private static int imageSize = 128; // Images are imageSize x imageSize. The
+	private static int imageSize = 8; // Images are imageSize x imageSize. The
 										// provided data is 128x128, but this
 										// can be resized by setting this value
 										// (or passing in an argument).
