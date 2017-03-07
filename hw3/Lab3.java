@@ -26,7 +26,7 @@ import javax.imageio.ImageIO;
 
 public class Lab3 {
 
-	private static int imageSize = 128; // Images are imageSize x imageSize. The
+	private static int imageSize = 32; // Images are imageSize x imageSize. The
 										// provided data is 128x128, but this
 										// can be resized by setting this value
 										// (or passing in an argument).
@@ -52,7 +52,7 @@ public class Lab3 {
 															// use the grey
 															// value.
 
-	private static String modelToUse = "oneLayer"; // Should be one of {
+	private static String modelToUse = "deep"; // Should be one of {
 													// "perceptrons",
 													// "oneLayer", "deep" };
 													// You
@@ -242,7 +242,7 @@ public class Lab3 {
 
 	// Map from 2D coordinates (in pixels) to the 1D fixed-length feature
 	// vector.
-	private static double get2DfeatureValue(Vector<Double> ex, int x, int y, int offset) { // If
+	protected static double get2DfeatureValue(Vector<Double> ex, int x, int y, int offset) { // If
 																							// only
 																							// using
 																							// GREY,
@@ -975,6 +975,12 @@ public class Lab3 {
 	private static int trainDeep(Vector<Vector<Double>> trainFeatureVectors, Vector<Vector<Double>> tuneFeatureVectors,
 			Vector<Vector<Double>> testFeatureVectors) {
 		// You need to implement this method!
+		//
+		new Deep(trainFeatureVectors,tuneFeatureVectors,testFeatureVectors);
+		
+		
+		
+		
 		return -1;
 	}
 

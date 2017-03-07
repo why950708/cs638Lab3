@@ -1,0 +1,28 @@
+#Fully connected layer
+net = tflearn.fully_connected(net, n_units, activation='ReLU')
+#Output layer
+net = tflearn.fully_connected(net, 2, activation='softmax')
+
+#simple training
+net = tflearn.regression(net, optimizer='sgd', learning_rate=0.1, loss='categorical_crossentropy')
+
+#Final step to build it
+model = tflearn.DNN(net)
+
+
+#common training code
+model.fit(trainX, trainY, validation_set=0.1, show_metric=True, batch_size=100, n_epoch=100)
+
+
+ # Inputs
+    net = tflearn.input_data([None, trainX.shape[1]])
+
+    # Hidden layer(s)
+    net = tflearn.fully_connected(net, 128, activation='ReLU')
+    net = tflearn.fully_connected(net, 32, activation='ReLU')
+
+    # Output layer and training model
+    net = tflearn.fully_connected(net, 10, activation='softmax')
+    net = tflearn.regression(net, optimizer='sgd', learning_rate=0.01, loss='categorical_crossentropy')
+
+    model = tflearn.DNN(net)
