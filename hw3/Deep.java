@@ -56,7 +56,19 @@ public class Deep {
 	int C3KernalSize = 3;
 	int MP1KernalSize = 2;
 	int MP2KernalSize = 2;
-
+	
+	
+	//Buffers for intermediate sums and max
+	Double[][][] bufferC1;
+	Double[][][] bufferMP1;
+	Double[][][] bufferC2; 
+	Double[][][] bufferMP2;
+	Double[] bufferFL1;
+	Double[] bufferFL2;
+	Vector<int[]> bufferMaxonMP2 ;
+	Vector<int[]> bufferMaxonMP1 ;
+	
+	
 	public Deep(Vector<Vector<Double>> trainfeatureVectors, Vector<Vector<Double>> tunefeatureVectors,
 			Vector<Vector<Double>> testfeatureVectors) {
 
@@ -72,8 +84,8 @@ public class Deep {
 		c1weights = new Double[numC1][C1KernalSize][C1KernalSize];
 		p1toc2weights = new Double[numMP1][MP1KernalSize][MP1KernalSize];
 		c2weights = new Double[numC2][C2KernalSize][C2KernalSize];
-		fl1weights = new Double[numFL][numMP2][MP2KernalSize][MP2KernalSize];
-		fl2weights = new Double[numFL][numFL2];
+		fl1weights = new Double[numFL][numMP2][5][5];
+		fl2weights = new Double[numFL2][numFL];
 		biasC1 = new Double[numC1];
 		biasC2 = new Double[numC2];
 		biasMP1 = new Double[numMP1];
@@ -196,7 +208,7 @@ public class Deep {
 		// input to convolution layer output
 		int size = (imageSize - C1KernalSize) / stride + 1;
 
-		Double[][][] bufferC1 = new Double[numC1][size][size];
+		bufferC1 = new Double[numC1][size][size];
 
 		for (int z = 0; z < c1weights.length; z++) {
 			for (int i = 0; i < size; i++)
@@ -220,11 +232,13 @@ public class Deep {
 		// c1 to mp1
 		stride = 2;
 		size = (size - MP1KernalSize) / stride + 1;
+		bufferMaxonMP1 = new Vector<int[]>();
 		// Hongyi Wang print size for debugging;
 		// System.out.print(size);
 
 		double max = Double.NEGATIVE_INFINITY;
-		Double bufferMP1[][][] = new Double[numMP1][size][size];
+		
+		bufferMP1 = new Double[numMP1][size][size];
 
 		for (int z = 0; z < numMP1; z++) {
 			for (int i = 0; i < size; i++) {
@@ -237,6 +251,8 @@ public class Deep {
 							}
 						}
 						bufferMP1[z][i][j] = max;
+						int[] cache = {z,i,j};
+						bufferMaxonMP1.add(cache);
 						// Hongyi Wang print max for debugging;
 						// System.out.print(max);
 					}
@@ -249,7 +265,7 @@ public class Deep {
 		stride = 1;
 		size = (size - C2KernalSize) / stride + 1;
 		double sum = 0;
-		Double[][][] bufferC2 = new Double[numC2][size][size];
+		bufferC2 = new Double[numC2][size][size];
 		for (int z = 0; z < numC2; z++) {
 
 			for (int i = 0; i < size; i++)
@@ -278,13 +294,15 @@ public class Deep {
 				}
 		}
 		
+		//c2 to mp2
 		stride = 2;
 		size = (size - MP2KernalSize)/stride + 1;
+		bufferMaxonMP2 = new Vector<int[]>();
 		// Hongyi Wang print size for debugging;
-		 System.out.print(size);
+		// System.out.print(size);
 
 		max = Double.NEGATIVE_INFINITY;
-		Double bufferMP2[][][] = new Double[numMP2][size][size];
+		bufferMP2= new Double[numMP2][size][size];
 
 		for (int z = 0; z < numMP2; z++) {
 			for (int i = 0; i < size; i++) {
@@ -294,9 +312,12 @@ public class Deep {
 						for (int l = 0; l < MP2KernalSize; l++) {
 							if (bufferC2[z][i * stride + k][j * stride + l] > max) {
 								max = bufferC2[z][i * stride + k][j * stride + l];
+								
 							}
 						}
-						bufferMP1[z][i][j] = max;
+						bufferMP2[z][i][j] = max;
+						int[] cache = {z,i,j};
+						bufferMaxonMP2.add(cache);
 						// Hongyi Wang print max for debugging;
 						// System.out.print(max);
 					}
@@ -305,7 +326,79 @@ public class Deep {
 			}
 		}
 		
+		//mp2 to fullly connect layer 
+		bufferFL1 = new Double[numFL];
+		for(int i = 0; i<bufferFL1.length;i++)
+		{   sum = 0;
+			for(int j = 0; j < numMP2;j++)
+			{
+				sum += Util.matrixDot(bufferMP2[j],fl1weights[i][j]);
+				// System.out.print (bufferMP2[j]);
+			}
+			bufferFL1[i] = sum;
+			//Bias
+			bufferFL1[i] -= biasFL[i];
+			
+			//ReLu
+			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
+		}
 		
+		//Fully connected layer to output
+		bufferFL2 = new Double[numFL2];
+		for(int i = 0; i < bufferFL2.length;i++)
+		{
+
+				sum = Util.Dot(bufferFL1,fl2weights[i]);
+
+			bufferFL2[i] = sum;
+			//Bias
+			bufferFL2[i] -= biasFL2[i];
+
+			//Sigmoid
+			bufferFL2[i] = sigmoid(bufferFL2[i]);
+		}
+		rst = bufferFL2;
+		
+		for(int i = 0 ; i < bufferFL2.length; i++)
+		{
+			System.out.println(rst[i]);
+		}
 		return rst;
 	}
+	
+	
+	public void backProp(Double[][][] TrainSet, Double[][][] TuneSet)
+	{
+		//Loop through all trainning samples
+		for(int i = 0; i < TrainSet.length; i++){
+		//Forward pass on 1 sample
+		//Output to fully connected layer
+		//fully connected to mp2
+		//MP2 to C2
+		//C2 to MP1
+		//MP1 to C1
+		//C1 to input
+		
+		//Check the accuracy on the TuneSet
+		
+		}
+	}
+
+
+
+public double sigmoid(double x)
+{
+	return 1.0/(1+Math.exp(-x));
+}
+
+public double ReLuPrime(double x)
+{
+	return x>0?1.0:0.0;
+}
+
+public double sigmoidPrime(double output)
+{
+	return output*(1-output);
+}
+
 }

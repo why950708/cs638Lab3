@@ -39,17 +39,45 @@
 	 
 	 if (aColumns != bColumns || aRows != bRows)
 	 {
-		 throw new IllegalArgumentException("A:Rows: " + aColumns + "did not math B:Columns " +bRows + ".");
+		 throw new IllegalArgumentException("A:Columns: " + aColumns + "did not math B:Columns " +bRows + ".");
 	 }
 	 
 	 double returnVal = 0.0;
 	 
 	 for(int i =0; i<aRows;i++)
 	 {
-		 for(int j = 0; j<bRows ; j++)
+		 for(int j = 0; j<bColumns ; j++)
 		 {
-			 returnVal += A[i][j] *B[i][j];
+			
+			 try {returnVal += A[i][j] *B[i][j];}
+			 catch(NullPointerException e)
+			 {System.out.print(A[i][j]);}
 		 }
+	 }
+	 
+	
+	return returnVal;
+ }
+ 
+ 
+ //Calculate the result for two vectors
+ public static double Dot(Double[] A, Double[] B)
+ {
+	 int aRows = A.length;
+	 
+	 int bRows = B.length;
+	
+	 
+	 if (aRows != bRows)
+	 {
+		 throw new IllegalArgumentException("Rows doesn't match!");
+	 }
+	 
+	 double returnVal = 0.0;
+	 
+	 for(int i =0; i<aRows;i++)
+	 {
+			 returnVal += A[i] *B[i];
 	 }
 	 
 	
