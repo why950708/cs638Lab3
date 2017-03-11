@@ -1,187 +1,151 @@
-hw3\Deep.java:320: error: illegal start of expression
-						bufferMaxonMP2.add({z,i,j});
-						                   ^
-hw3\Deep.java:320: error: ';' expected
-						bufferMaxonMP2.add({z,i,j});
-						                    ^
-hw3\Deep.java:320: error: illegal start of expression
-						bufferMaxonMP2.add({z,i,j});
-						                     ^
-hw3\Deep.java:320: error: ';' expected
-						bufferMaxonMP2.add({z,i,j});
-						                         ^
-hw3\Deep.java:320: error: illegal start of expression
-						bufferMaxonMP2.add({z,i,j});
-						                          ^
-hw3\Deep.java:330: error: <identifier> expected
-		bufferFL1 = new Double[numFL];
-		         ^
-hw3\Deep.java:331: error: illegal start of type
-		for(int i = 0; i<bufferFL1.length;i++)
-		^
-hw3\Deep.java:331: error: ')' expected
-		for(int i = 0; i<bufferFL1.length;i++)
-		         ^
-hw3\Deep.java:331: error: illegal start of type
-		for(int i = 0; i<bufferFL1.length;i++)
-		            ^
-hw3\Deep.java:331: error: <identifier> expected
-		for(int i = 0; i<bufferFL1.length;i++)
-		             ^
-hw3\Deep.java:331: error: ';' expected
-		for(int i = 0; i<bufferFL1.length;i++)
-		              ^
-hw3\Deep.java:331: error: > expected
-		for(int i = 0; i<bufferFL1.length;i++)
-		                          ^
-hw3\Deep.java:331: error: '(' expected
-		for(int i = 0; i<bufferFL1.length;i++)
-		                                 ^
-hw3\Deep.java:331: error: <identifier> expected
-		for(int i = 0; i<bufferFL1.length;i++)
+hw3\Deep.java:563: error: <identifier> expected
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
+		                  ^
+hw3\Deep.java:563: error: illegal start of type
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
+		                   ^
+hw3\Deep.java:563: error: ')' expected
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
 		                                   ^
-hw3\Deep.java:331: error: illegal start of type
-		for(int i = 0; i<bufferFL1.length;i++)
-		                                     ^
-hw3\Deep.java:331: error: <identifier> expected
-		for(int i = 0; i<bufferFL1.length;i++)
-		                                      ^
-hw3\Deep.java:332: error: ';' expected
-		{   sum = 0;
-		 ^
-hw3\Deep.java:332: error: illegal start of type
-		{   sum = 0;
-		        ^
-hw3\Deep.java:332: error: <identifier> expected
-		{   sum = 0;
-		         ^
-hw3\Deep.java:333: error: illegal start of type
-			for(int j = 0; j < numMP2;j++)
-			^
-hw3\Deep.java:333: error: ')' expected
-			for(int j = 0; j < numMP2;j++)
-			         ^
-hw3\Deep.java:333: error: illegal start of type
-			for(int j = 0; j < numMP2;j++)
-			            ^
-hw3\Deep.java:333: error: <identifier> expected
-			for(int j = 0; j < numMP2;j++)
-			             ^
-hw3\Deep.java:333: error: ';' expected
-			for(int j = 0; j < numMP2;j++)
-			              ^
-hw3\Deep.java:333: error: > expected
-			for(int j = 0; j < numMP2;j++)
-			                         ^
-hw3\Deep.java:333: error: '(' expected
-			for(int j = 0; j < numMP2;j++)
-			                           ^
-hw3\Deep.java:338: error: ']' expected
-			bufferFL1[i] = sum;
-			          ^
-hw3\Deep.java:338: error: ';' expected
-			bufferFL1[i] = sum;
-			           ^
-hw3\Deep.java:338: error: <identifier> expected
-			bufferFL1[i] = sum;
-			                  ^
-hw3\Deep.java:340: error: ']' expected
-			bufferFL1[i] -= biasFL[i];
-			          ^
-hw3\Deep.java:340: error: ';' expected
-			bufferFL1[i] -= biasFL[i];
-			           ^
-hw3\Deep.java:340: error: ']' expected
-			bufferFL1[i] -= biasFL[i];
-			                       ^
-hw3\Deep.java:340: error: ';' expected
-			bufferFL1[i] -= biasFL[i];
-			                        ^
-hw3\Deep.java:343: error: illegal start of type
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			^
-hw3\Deep.java:343: error: ']' expected
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			              ^
-hw3\Deep.java:343: error: ')' expected
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			               ^
-hw3\Deep.java:343: error: <identifier> expected
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			                  ^
-hw3\Deep.java:343: error: illegal start of type
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			                    ^
-hw3\Deep.java:343: error: '(' expected
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			                               ^
-hw3\Deep.java:343: error: <identifier> expected
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			                                 ^
-hw3\Deep.java:343: error: illegal start of type
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			                                   ^
-hw3\Deep.java:343: error: <identifier> expected
-			if (bufferFL1[i] < 0) bufferFL1[i] = 0.0;
-			                                    ^
-hw3\Deep.java:347: error: class, interface, or enum expected
-		bufferFL2 = new Double[numFL2];
-		^
-hw3\Deep.java:348: error: class, interface, or enum expected
-		for(int i = 0; i < bufferFL2.length;i++)
-		^
-hw3\Deep.java:348: error: class, interface, or enum expected
-		for(int i = 0; i < bufferFL2.length;i++)
-		               ^
-hw3\Deep.java:348: error: class, interface, or enum expected
-		for(int i = 0; i < bufferFL2.length;i++)
+hw3\Deep.java:563: error: ';' expected
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
 		                                    ^
-hw3\Deep.java:353: error: class, interface, or enum expected
-			bufferFL2[i] = sum;
-			^
-hw3\Deep.java:355: error: class, interface, or enum expected
-			bufferFL2[i] -= biasFL2[i];
-			^
-hw3\Deep.java:358: error: class, interface, or enum expected
-			bufferFL2[i] = sigmoid(bufferFL2[i]);
-			^
-hw3\Deep.java:359: error: class, interface, or enum expected
+hw3\Deep.java:563: error: illegal start of type
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
+		                                                  ^
+hw3\Deep.java:563: error: <identifier> expected
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
+		                                                   ^
+hw3\Deep.java:563: error: ';' expected
+		System.out.println("Correct tune: "+ tuneAccuracy + " ");
+		                                                       ^
+hw3\Deep.java:565: error: illegal start of type
+		if(tuneAccuracy > 0.5)
+		^
+hw3\Deep.java:565: error: <identifier> expected
+		if(tuneAccuracy > 0.5)
+		               ^
+hw3\Deep.java:565: error: ';' expected
+		if(tuneAccuracy > 0.5)
+		                 ^
+hw3\Deep.java:565: error: illegal start of type
+		if(tuneAccuracy > 0.5)
+		                     ^
+hw3\Deep.java:565: error: <identifier> expected
+		if(tuneAccuracy > 0.5)
+		                      ^
+hw3\Deep.java:566: error: ';' expected
+		{
+		 ^
+hw3\Deep.java:568: error: <identifier> expected
+			double accuracy = reportAccuracy(TestSet, TestLabel);
+			               ^
+hw3\Deep.java:569: error: <identifier> expected
+			System.out.println("Done with test accuracy: " + accuracy);
+			                  ^
+hw3\Deep.java:569: error: illegal start of type
+			System.out.println("Done with test accuracy: " + accuracy);
+			                   ^
+hw3\Deep.java:569: error: ')' expected
+			System.out.println("Done with test accuracy: " + accuracy);
+			                                              ^
+hw3\Deep.java:569: error: ';' expected
+			System.out.println("Done with test accuracy: " + accuracy);
+			                                                ^
+hw3\Deep.java:569: error: illegal start of type
+			System.out.println("Done with test accuracy: " + accuracy);
+			                                                         ^
+hw3\Deep.java:569: error: <identifier> expected
+			System.out.println("Done with test accuracy: " + accuracy);
+			                                                          ^
+hw3\Deep.java:569: error: ';' expected
+			System.out.println("Done with test accuracy: " + accuracy);
+			                                                           ^
+hw3\Deep.java:574: error: class, interface, or enum expected
+		System.out.print("Done with epoch: " + epoch + " ");
+		^
+hw3\Deep.java:583: error: class, interface, or enum expected
 		}
 		^
-hw3\Deep.java:362: error: class, interface, or enum expected
-		for(int i = 0 ; i < bufferFL2.length; i++)
-		^
-hw3\Deep.java:362: error: class, interface, or enum expected
-		for(int i = 0 ; i < bufferFL2.length; i++)
-		                ^
-hw3\Deep.java:362: error: class, interface, or enum expected
-		for(int i = 0 ; i < bufferFL2.length; i++)
-		                                      ^
-hw3\Deep.java:365: error: class, interface, or enum expected
-		}
-		^
-hw3\Deep.java:367: error: class, interface, or enum expected
-	}
-	^
-hw3\Deep.java:370: error: class, interface, or enum expected
-	public void backProp(Double[][][] TrainSet, Double[][][] TuneSet)
-	       ^
-hw3\Deep.java:386: error: class, interface, or enum expected
+hw3\Deep.java:589: error: class, interface, or enum expected
 public double sigmoid(double x)
        ^
-hw3\Deep.java:389: error: class, interface, or enum expected
+hw3\Deep.java:592: error: class, interface, or enum expected
 }
 ^
-hw3\Deep.java:391: error: class, interface, or enum expected
+hw3\Deep.java:594: error: class, interface, or enum expected
 public double ReLuPrime(double x)
        ^
-hw3\Deep.java:394: error: class, interface, or enum expected
+hw3\Deep.java:597: error: class, interface, or enum expected
 }
 ^
-hw3\Deep.java:396: error: class, interface, or enum expected
+hw3\Deep.java:599: error: class, interface, or enum expected
 public double sigmoidPrime(double output)
        ^
-hw3\Deep.java:399: error: class, interface, or enum expected
+hw3\Deep.java:602: error: class, interface, or enum expected
 }
 ^
-62 errors
+hw3\Deep.java:608: error: class, interface, or enum expected
+		for (int z = 0; z < trainfeatureVectors.size(); z++) {
+		^
+hw3\Deep.java:608: error: class, interface, or enum expected
+		for (int z = 0; z < trainfeatureVectors.size(); z++) {
+		                ^
+hw3\Deep.java:608: error: class, interface, or enum expected
+		for (int z = 0; z < trainfeatureVectors.size(); z++) {
+		                                                ^
+hw3\Deep.java:609: error: class, interface, or enum expected
+			for (int i = 0; i < imageSize; i++)
+			                ^
+hw3\Deep.java:609: error: class, interface, or enum expected
+			for (int i = 0; i < imageSize; i++)
+			                               ^
+hw3\Deep.java:610: error: class, interface, or enum expected
+				for (int j = 0; j < imageSize; j++) {
+				                ^
+hw3\Deep.java:610: error: class, interface, or enum expected
+				for (int j = 0; j < imageSize; j++) {
+				                               ^
+hw3\Deep.java:614: error: class, interface, or enum expected
+				}
+				^
+hw3\Deep.java:616: error: class, interface, or enum expected
+		}
+		^
+hw3\Deep.java:622: error: class, interface, or enum expected
+		for(int j = 0; j< set.length; j++)
+		^
+hw3\Deep.java:622: error: class, interface, or enum expected
+		for(int j = 0; j< set.length; j++)
+		               ^
+hw3\Deep.java:622: error: class, interface, or enum expected
+		for(int j = 0; j< set.length; j++)
+		                              ^
+hw3\Deep.java:625: error: class, interface, or enum expected
+			double max = Double.NEGATIVE_INFINITY;
+			^
+hw3\Deep.java:626: error: class, interface, or enum expected
+			double maxIndex = -1;
+			^
+hw3\Deep.java:627: error: class, interface, or enum expected
+			for(int z = 0; z<rst.length;z++)
+			^
+hw3\Deep.java:627: error: class, interface, or enum expected
+			for(int z = 0; z<rst.length;z++)
+			               ^
+hw3\Deep.java:627: error: class, interface, or enum expected
+			for(int z = 0; z<rst.length;z++)
+			                            ^
+hw3\Deep.java:632: error: class, interface, or enum expected
+					maxIndex = z;
+					^
+hw3\Deep.java:633: error: class, interface, or enum expected
+				}
+				^
+hw3\Deep.java:640: error: class, interface, or enum expected
+		}
+		^
+hw3\Deep.java:642: error: class, interface, or enum expected
+}
+^
+50 errors

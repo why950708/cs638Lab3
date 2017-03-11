@@ -1,5 +1,8 @@
  package hw3;
- public class Util{
+
+import javax.management.RuntimeErrorException;
+
+public class Util{
  public static Double[][] matrixMultiply(Double[][] A, Double[][] B) {
 
         int aRows = A.length;
@@ -37,10 +40,16 @@
 	 int bRows = B.length;
 	 int bColumns = B[0].length;
 	 
-	 if (aColumns != bColumns || aRows != bRows)
+	try{ if (aColumns != bColumns || aRows != bRows)
 	 {
 		 throw new IllegalArgumentException("A:Columns: " + aColumns + "did not math B:Columns " +bRows + ".");
-	 }
+		}
+	}
+	catch(IllegalArgumentException e){
+	 System.out.println("Row " + aRows + " Col "+ aColumns );
+	 System.out.println("Row " + bRows + " Col "+ bColumns );
+	 throw new IllegalAccessError();
+	}
 	 
 	 double returnVal = 0.0;
 	 
