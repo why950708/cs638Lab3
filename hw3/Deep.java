@@ -402,17 +402,18 @@ public class Deep {
 		}
 		rst = bufferFL2;
 
-		// Hongyi Wang for debugging
-		// for(int i = 0 ; i < bufferFL2.length; i++)
-		// {
-		// System.out.println(rst[i]);
-		// }
+		 //Hongyi Wang for debugging
+		 // for(int i = 0 ; i < bufferFL2.length; i++)
+		 // {
+		 // System.out.println(rst[i]);
+		 // }
 		return rst;
 	}
 
 	public void train() {
 		int maxEpoch = Lab3.maxEpochs;
 		int epoch;
+		long start = System.currentTimeMillis();
 		for (epoch = 0; epoch < maxEpoch; epoch++) {
 			// Loop through all trainning samples
 			for (int i = 0; i < TrainSet.length; i++) {
@@ -519,7 +520,7 @@ public class Deep {
 					// corresponding weights
 					for (int z = 0; z < numC2; z++) {
 						// try{
-						sum += p1toc2weights[z][a][b][c] * dp1toc2weights[z];
+						sum += p1toc2weights[z][a][b%C2KernalSize][c%C2KernalSize] * dp1toc2weights[z];
 						// }
 						// catch(ArrayIndexOutOfBoundsException e)
 						// {
@@ -567,7 +568,8 @@ public class Deep {
 			}
 
 			System.out.print("Done with epoch: " + epoch + " ");
-
+			System.out.print("Time: " + Lab3.convertMillisecondsToTimeSpan(System.currentTimeMillis() - start));
+			start = System.currentTimeMillis();
 			// System.out.println(
 			// "\n***** Best tuneset errors = " + comma(best_tuneSetErrors) + "
 			// of " + comma(tuneFeatureVectors.size())
